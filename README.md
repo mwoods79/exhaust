@@ -1,8 +1,6 @@
 # Exhaust
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/exhaust`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Exhaust makes smoke testing a Ember/Rails stack easy.
 
 ## Installation
 
@@ -22,7 +20,72 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1. Create a .exhaust.yml
+
+```yaml
+rails:
+  path: "/path/to/rails"
+  port: 3001
+ember:
+  path: "/path/to/ember"
+  port: 4201
+```
+
+2. Start the servers
+```ruby
+Exhaust.run!
+```
+
+3. Stop the servers
+```ruby
+Exhaust.shutdown!
+```
+
+### Using with Cucumber
+```ruby
+# Add to features/support/env.rb
+Exhaust.run!
+at_exit { Exhaust.shutdown! }
+
+Capybara.configure do |config|
+  config.run_server = false
+  config.app_host = Exhaust.ember_host
+end
+```
+
+### Using with Rspec
+```ruby
+# Add to spec/spec_helper.rb
+Exhaust.run!
+at_exit { Exhaust.shutdown! }
+
+Capybara.configure do |config|
+  config.run_server = false
+  config.app_host = Exhaust.ember_host
+end
+```
+
+Of if you prefer
+
+```ruby
+# Add to spec/spec_helper.rb
+before(:all) { Exhaust.run! }
+after(:all) { Exhaust.shutdown! }
+
+Capybara.configure do |config|
+  config.run_server = false
+  config.app_host = Exhaust.ember_host
+end
+```
+
+### NOTE:
+When using outside of the rails environment you will need to manually require the rails environment.
+
+```ruby
+ENV['RAILS_ENV'] ||= 'test'
+path_to_rails = "/your/rails/path"
+require File.expand_path("#{path_to_rails}/config/environment")
+```
 
 ## Development
 
@@ -32,7 +95,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/exhaust.
+Bug reports and pull requests are welcome on GitHub at https://github.com/mwoods79/exhaust.
 
 
 ## License
