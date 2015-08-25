@@ -1,0 +1,6 @@
+rails:
+  path: "./spec/fixtures/rails_example"
+  port: 3001
+ember:
+  path: "./spec/fixtures/ember-example"
+  port: 4201
