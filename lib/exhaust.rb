@@ -1,4 +1,6 @@
-Dir[Dir.pwd + "/lib/exhaust/**/*.rb"].each { |f| require f }
+require 'exhaust/configuration'
+require 'exhaust/runner'
+require 'exhaust/version'
 
 module Exhaust
   def self.run!
