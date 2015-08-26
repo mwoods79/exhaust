@@ -43,5 +43,11 @@ module.exports = function(environment) {
 
   }
 
+  if (environment === 'test') {
+    ENV.API_HOST = ''
+  } else {
+    ENV.API_HOST = (process.env.API_HOST || 'http://localhost:3000')
+  }
+
   return ENV;
 };

@@ -1,0 +1,9 @@
+{{!- app/templates/todos.hbs }}
+
+<h1>Todo List</h1>
+
+{{#each model as |todo|}}
+  <p class='todo-item'>
+    {{todo.title}}
+  </p>
+{{/each}}
