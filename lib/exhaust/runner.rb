@@ -43,7 +43,7 @@ module Exhaust
     def ember_server
       @ember_server ||= begin
         Dir.chdir(ember_path) do
-          @ember_server = IO.popen([{"API_HOST" => "http://localhost:3001"}, "ember", "server", "--port", ember_port, "--live-reload", "false", :err => [:child, :out]])
+          @ember_server = IO.popen([{"API_HOST" => "http://localhost:#{rails_port}"}, "ember", "server", "--port", ember_port, "--live-reload", "false", :err => [:child, :out]])
         end
       end
     end
