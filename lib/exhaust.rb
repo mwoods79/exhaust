@@ -15,7 +15,7 @@ module Exhaust
     runner.ember_host
   end
 
-  def shutdown!
+  def self.shutdown!
     runner.shutdown!
   end
 end
