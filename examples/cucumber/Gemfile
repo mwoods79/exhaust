@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
 
-eval_gemfile File.join("/Users/mwoods/hashrocket/example_todo/Gemfile")
+# TODO: Have to hardcode full path?
+eval_gemfile "/Users/mwoods/hashrocket/exhaust/spec/fixtures/rails_example/Gemfile"
 
-gem 'exhaust', path: "~/hashrocket/exhaust"
+gem 'exhaust', path: "../../../exhaust"
+gem 'cucumber'
+gem 'capybara-webkit'
+gem 'database_cleaner'
 gem 'pry'
-

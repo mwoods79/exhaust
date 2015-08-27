@@ -1,5 +1,5 @@
 ENV['RAILS_ENV'] ||= 'test'
-path_to_rails = "/Users/mwoods/hashrocket/example_todo"
+path_to_rails = "../../spec/fixtures/rails_example"
 require File.expand_path("#{path_to_rails}/config/environment")
 
 require 'capybara/cucumber'
@@ -11,10 +11,6 @@ begin
   DatabaseCleaner.strategy = :truncation
 rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
-end
-
-Around do |scenario, block|
-  DatabaseCleaner.cleaning(&block)
 end
 
 Exhaust.run!
