@@ -7,15 +7,18 @@ module Exhaust
     end
 
     def run
-      while running = ember_server.gets
-        if running =~ /build successful/i
-          break
+      Timeout::timeout(30) do
+        while running = ember_server.gets
+          if running =~ /build successful/i
+            break
+          end
         end
-      end
 
-      while running = rails_server.gets
-        if running =~ /info/i
-          break
+        while running = rails_server.gets
+          puts running
+          if running =~ /info/i
+            break
+          end
         end
       end
     end
