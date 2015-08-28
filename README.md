@@ -111,10 +111,6 @@ require 'database_cleaner/cucumber'
 
 DatabaseCleaner.strategy = :truncation
 
-Around do |scenario, block|
-  DatabaseCleaner.cleaning(&block)
-end
-
 Exhaust.run!
 at_exit { Exhaust.shutdown! }
 
