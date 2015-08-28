@@ -84,7 +84,7 @@ at_exit { Exhaust.shutdown! }
 
 Capybara.configure do |config|
   config.run_server = false
-  // Use whatever driver you want
+  # Use whatever driver you want
   config.default_driver = :webkit
   config.app_host = Exhaust.ember_host
 end
@@ -115,7 +115,7 @@ Exhaust.run!
 at_exit { Exhaust.shutdown! }
 
 Capybara.configure do |config|
-  // Use whatever driver you want
+  # Use whatever driver you want
   config.default_driver = :webkit
   config.app_host = Exhaust.ember_host
 end
