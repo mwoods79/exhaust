@@ -75,7 +75,7 @@ Exhaust.shutdown!
 
 ### Using with Cucumber
 
-When used insided a rails app.
+When used inside a rails app.
 
 ```ruby
 # Add to features/support/env.rb
